@@ -1,0 +1,26 @@
+dogs#show
+
+
+<% @pets.each do |dog| %>
+<div class="well">
+  <%= image_tag dog.photos[0].large if dog.photos[0]%><br>
+  Name: <%= dog.name %><br>
+
+  Age: <%= dog.age%><br>
+
+  Breed: <%= breeds = dog.breeds
+    breeds.map(&:inspect).join(', ')%><br>
+
+  Shelter: <%= @petfinder.shelter(dog.shelter_id).name %><br>
+
+  Size: <%= dog.size %><br>
+
+  Location: <%= city = dog.city
+  city.map(&:inspect).join(', ') %><br>
+
+  Sex: <%= dog.sex%><br>
+
+  Description: <%= dog.description%><br>
+
+</div>
+<% end %>
