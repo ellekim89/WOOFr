@@ -1,4 +1,5 @@
 class DogsController < ApplicationController
+    before_action :check_auth
 require 'petfinder'
 
   def index

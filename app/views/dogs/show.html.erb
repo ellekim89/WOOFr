@@ -1,26 +1,60 @@
-dogs#show
+<div class="container">
 
 
-<% @pets.each do |dog| %>
+<div id="tinderslide">
+    <ul>
+         <% @pets.each do |dog| %>
+        <li class="pane1"><div class="img">
+          <%= image_tag dog.photos[0].large if dog.photos[0]%>
+        </div><div><%= dog.name %>,
+        <%= city = dog.city
+        city.map(&:inspect).join(', ').chomp %>
+        </div><div class="like"></div><div class="dislike"></div></li>
+         <% end %>
+    </ul>
+</div>
+</div>
+
+<script type="text/javascript">
+
+  $("#tinderslide").jTinder({
+    onDislike: function (item) {
+        alert('Dislike image ' + (item.index()+1));
+    },
+    onLike: function (item) {
+        alert('Like image ' + (item.index()+1));
+    },
+    animationRevertSpeed: 200,
+    animationSpeed: 400,
+    threshold: 1,
+    likeSelector: '.like',
+    dislikeSelector: '.dislike'
+});
+
+</script>
+<!-- <div>
+<% #@pets.each do |dog| %>
 <div class="well">
-  <%= image_tag dog.photos[0].large if dog.photos[0]%><br>
-  Name: <%= dog.name %><br>
+  <%#= image_tag dog.photos[0].large if dog.photos[0]%><br>
+  Name: <%#= dog.name %><br>
 
-  Age: <%= dog.age%><br>
+  Age: <%#= dog.age%><br>
 
-  Breed: <%= breeds = dog.breeds
+  Breed: <%#= breeds = dog.breeds
     breeds.map(&:inspect).join(', ')%><br>
 
-  Shelter: <%= @petfinder.shelter(dog.shelter_id).name %><br>
+  Shelter Info: <ul>
+  <li><%#= @petfinder.shelter(dog.shelter_id).name %></li>
+  <li><%#= @petfinder.shelter(dog.shelter_id).email%></li>
+  <li><%#= city = dog.city
+  city.map(&:inspect).join(', ').chomp %></li>
+  </ul>
+  Size: <%#= dog.size %><br>
 
-  Size: <%= dog.size %><br>
+  Sex: <%#= dog.sex%><br>
 
-  Location: <%= city = dog.city
-  city.map(&:inspect).join(', ') %><br>
-
-  Sex: <%= dog.sex%><br>
-
-  Description: <%= dog.description%><br>
+  Description: <%#= dog.description%><br>
 
 </div>
-<% end %>
+<% #end %>
+</div> -->
