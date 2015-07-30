@@ -18,6 +18,11 @@ Rails.application.routes.draw do
   get 'results' => 'dogs#show'
 
 
+  post 'favorites' => 'favorites#create'
+
+  get 'favorites' => 'favorites#show'
+
+
   resources :dogs
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725195827) do
+ActiveRecord::Schema.define(version: 20150729190738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,20 @@ ActiveRecord::Schema.define(version: 20150725195827) do
     t.integer  "pf_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
+
+  add_index "dogs", ["user_id"], name: "index_dogs_on_user_id", using: :btree
+
+  create_table "dogs_users", force: :cascade do |t|
+    t.integer  "dog_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "dogs_users", ["dog_id"], name: "index_dogs_users_on_dog_id", using: :btree
+  add_index "dogs_users", ["user_id"], name: "index_dogs_users_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -33,4 +46,7 @@ ActiveRecord::Schema.define(version: 20150725195827) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "dogs", "users"
+  add_foreign_key "dogs_users", "dogs"
+  add_foreign_key "dogs_users", "users"
 end

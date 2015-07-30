@@ -1,0 +1,16 @@
+<div class="container">
+<div class="row">
+
+
+ <% @dogs.each do |dog| %>
+ <div class="well">
+
+       <div class="img">
+          <%= image_tag dog.dog.photo%>
+        </div>
+        <span class="dog_id"><%= dog.dog.id %></span>,
+        <%= dog.dog.name %>,
+    </div>
+     <% end %>
+</div>
+</div>

@@ -1,37 +1,34 @@
-<div class="container">
+<%= csrf_meta_tag %>
 
-
-<div id="tinderslide">
+<center>
+<div class="container"><br>
+<div class = "row">
+<div class = "wrap">
+  <div id="tinderslide">
     <ul>
-         <% @pets.each do |dog| %>
+         <% @dogs_db.each do |dog| %>
         <li class="pane1"><div class="img">
-          <%= image_tag dog.photos[0].large if dog.photos[0]%>
-        </div><div><%= dog.name %>,
-        <%= city = dog.city
-        city.map(&:inspect).join(', ').chomp %>
+          <%= image_tag dog.photo%>
+        </div><div>
+        <span class="dog_id"><%= dog.id %></span>,
+        <%= dog.name %>,
         </div><div class="like"></div><div class="dislike"></div></li>
          <% end %>
     </ul>
+
+  </div>
+   <div class = "actions">
+    <a href="#" class = "dislike"><i></i></a>
+    <a href="#" class = "like"><i></i></a>
+  </div>
+
+</div>
+
 </div>
 </div>
 
-<script type="text/javascript">
+</center>
 
-  $("#tinderslide").jTinder({
-    onDislike: function (item) {
-        alert('Dislike image ' + (item.index()+1));
-    },
-    onLike: function (item) {
-        alert('Like image ' + (item.index()+1));
-    },
-    animationRevertSpeed: 200,
-    animationSpeed: 400,
-    threshold: 1,
-    likeSelector: '.like',
-    dislikeSelector: '.dislike'
-});
-
-</script>
 <!-- <div>
 <% #@pets.each do |dog| %>
 <div class="well">
