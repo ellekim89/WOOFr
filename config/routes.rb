@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
   post 'favorites' => 'favorites#create'
 
-  get 'favorites' => 'favorites#show'
+  get 'favorites' => 'favorites#show', as: 'user_favorites'
+
+  delete 'favorites/:id' => 'favorites#destroy', as: 'destroy_favorite'
 
 
   resources :dogs

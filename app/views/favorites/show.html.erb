@@ -1,16 +1,24 @@
+<center>
 <div class="container">
 <div class="row">
 
-
- <% @dogs.each do |dog| %>
+<div class="col-md-5 col-md-offset-4">
+ <% @favorites.each do |favorite| %>
  <div class="well">
-
        <div class="img">
-          <%= image_tag dog.dog.photo%>
-        </div>
-        <span class="dog_id"><%= dog.dog.id %></span>,
-        <%= dog.dog.name %>,
+          <%= image_tag favorite.dog.photo%>
+        </div><br>
+        <a href="#<%=favorite.dog.id %>" class="toggle btn btn-primary"> <%= favorite.dog.name %>'s Info </a>
+        <%= link_to "", destroy_favorite_path(favorite), method: :delete, class: 'btn btn-danger btn-sm glyphicon glyphicon-remove', data: {confirm: "Are you sure?"} %><br>
+        <div id="<%=favorite.dog.id %>" class="well hidden">
+        <span class="dog_id">WOOFr ID:<%= favorite.dog.id %></span><br>
+        <h3><%= favorite.dog.name %></h3><br>
+        <%= favorite.dog.description %>
+
+    </div>
     </div>
      <% end %>
 </div>
 </div>
+</div>
+</center>

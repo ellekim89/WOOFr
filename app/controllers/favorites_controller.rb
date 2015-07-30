@@ -11,11 +11,14 @@ class FavoritesController < ApplicationController
   end
 
   def show
-    @dogs = DogsUsers.where user_id: session[:user_id]
+    @favorites = DogsUsers.where user_id: session[:user_id]
   end
 
 
   def destroy
+    DogsUsers.find(params[:id]).delete
+    redirect_to user_favorites_path
+
   end
 
 
