@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery.jTinder
 //= require jquery.transform2d
 //= require_tree .

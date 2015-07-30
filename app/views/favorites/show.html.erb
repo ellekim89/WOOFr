@@ -10,8 +10,8 @@
         </div><br>
         <a href="#<%=favorite.dog.id %>" class="toggle btn btn-primary"> <%= favorite.dog.name %>'s Info </a>
         <%= link_to "", destroy_favorite_path(favorite), method: :delete, class: 'btn btn-danger btn-sm glyphicon glyphicon-remove', data: {confirm: "Are you sure?"} %><br>
-        <div id="<%=favorite.dog.id %>" class="well hidden">
-        <span class="dog_id">WOOFr ID:<%= favorite.dog.id %></span><br>
+        <br> <div id="<%=favorite.dog.id %>" class="well hidden">
+        <span class="dog_id">WOOFr ID: <%= favorite.dog.id %></span><br>
         <h3><%= favorite.dog.name %></h3><br>
         <%= favorite.dog.description %>
 

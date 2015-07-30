@@ -53,10 +53,6 @@ $(function() {
     dislikeSelector: '.dislike',
     current_iterator: 24
   });
-  // $("#tinderslide").on("click", "li", function(){
-  //   //SAVE DOG VIA AJAX HERE
-
-  // });
 
 $('.actions .like, .actions .dislike').click(function(e){
   e.preventDefault();
