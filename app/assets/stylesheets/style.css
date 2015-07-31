@@ -4,6 +4,7 @@ body {
     font-family: 'Lato', sans-serif;
 }
 .welcome {
+    margin-top: 100px;
     border: white 5px solid;
     padding-left: 20px;
     padding-right: 20px;
